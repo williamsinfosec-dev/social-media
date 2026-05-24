@@ -1,7 +1,89 @@
-.vscode/
+# =============================================================================
+# Williams InfoSec LLC — Baseline .gitignore
+# Drop into the root of every repo. Edit per-repo as needed.
+# =============================================================================
+
+# --- PII guardrail (Williams InfoSec convention) ---
+# Any file prefixed PII_ never gets committed. Aligns with script output policy.
+PII_*
+**/PII_*
+
+# --- Secrets & credentials ---
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cer
+*.env
+*.env.*
+.env
+.env.local
+.env.*.local
+secrets/
+credentials/
+*credentials*
+*secret*
+*.token
+*.tokens
+azureauth.json
+gcp-key*.json
+service-account*.json
+.aws/
+.azure/
+.gcloud/
+
+# --- Client / tenant identifiers in plain text ---
+# Never commit raw exports from tenant discovery
+tenant-export*.json
+subscription-export*.csv
+gcp-org-export*.json
+
+# --- Script execution artifacts ---
+# Anything written to the public outputs dir should never come back into Git
+TenantLockAudit_*.csv
+*_RBAC_Audit_*.csv
+*_NSG_Inventory_*.csv
+*_findings_*.json
+audit_*.log
 *.log
+logs/
+
+# --- Build & dependency outputs ---
+node_modules/
+dist/
+build/
+out/
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+
+# --- IDE & OS ---
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Office temp / lock files ---
+~$*
 *.tmp
 *.bak
-node_modules/
-.DS_Store
-.env
+
+# --- Slide / doc generation byproducts ---
+*.pdf.tmp
+slide-preview-*.jpg
+slide-preview-*.png
+
+# --- Allow brand assets ---
+!Asset_4_20230417_16_27_07.png
+!**/brand/*.png
+!**/brand/*.svg
